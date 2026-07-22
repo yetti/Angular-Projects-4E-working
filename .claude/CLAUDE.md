@@ -72,3 +72,12 @@ Here is a link to the most recent Angular style guide https://angular.dev/style-
 - Use the `providedIn: 'root'` option for singleton services
 - Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})` for new singleton services (Angular v22+)
 - Use the `inject()` function instead of constructor injection
+
+## Firebase
+
+- Import ALL Firestore symbols (`Firestore`, `collection`, `collectionData`, `doc`, `docData`, …) from `@angular/fire/firestore`. NEVER import them from `firebase/firestore` or `firebase/firestore/lite`, even though `firebase` is a direct dependency and editors will offer those paths.
+  - Mixing sources loads more than one copy of the Firestore SDK. Objects then fail `instanceof` checks across copies, producing runtime errors such as `Expected type '_Query', but it was: a custom _CollectionReference object`.
+  - `Firestore` from `firebase/firestore` is a plain class, not the injectable token. `inject()` on it throws `NG0201: No provider found for Firestore`.
+- `firebase` is pinned to `^11` because `@angular/fire@20` depends on `firebase: ^11.8.0`. Upgrading to 12 reintroduces duplicate SDK copies. Verify with `npm ls firebase` — expect a single entry.
+- Installs require `--legacy-peer-deps`: `@angular/fire@20` declares `@angular/core: ^20`, and this workspace is on Angular 22.
+- Keep Firestore access inside a service (e.g. `core/services/tables.ts`) that exposes signals. Components must not call `collection()`/`collectionData()` directly — doing so forces every ancestor's test to provide Firebase.
