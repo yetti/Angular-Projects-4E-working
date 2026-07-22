@@ -1,6 +1,22 @@
 
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
+## Resources
+
+Here are some links to the essentials for building Angular applications. Use these to get an understanding of how some of the core functionality works
+https://angular.dev/essentials/components
+https://angular.dev/essentials/signals
+https://angular.dev/essentials/templates
+https://angular.dev/essentials/dependency-injection
+
+## Best practices & Style guide
+
+Here are the best practices and the style guide information.
+
+### Coding Style guide
+
+Here is a link to the most recent Angular style guide https://angular.dev/style-guide
+
 ## TypeScript Best Practices
 
 - Use strict type checking
@@ -41,6 +57,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use `computed()` for derived state
 - Keep state transformations pure and predictable
 - Do NOT use `mutate` on signals, use `update` or `set` instead
+- Define signal properties as `readonly`
 
 ## Templates
 
