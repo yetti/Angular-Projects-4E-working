@@ -1,0 +1,39 @@
+<form clrForm [formGroup]="form" (ngSubmit)="create()">
+  <clr-input-container>
+    <label for="title">Title</label>
+    <input clrInput id="title" formControlName="title" />
+    <clr-control-error>Title is required</clr-control-error>
+  </clr-input-container>
+
+  <clr-textarea-container>
+    <label for="description">Description</label>
+    <textarea clrTextarea id="description" formControlName="description"></textarea>
+  </clr-textarea-container>
+
+  <clr-radio-container>
+    <label for="priority">Priority</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio id="priority-low" formControlName="priority" value="low" />
+      <label for="priority-low">Low</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio id="priority-high" formControlName="priority" value="high" />
+      <label for="priority-high">High</label>
+    </clr-radio-wrapper>
+    <clr-control-error>Priority is required</clr-control-error>
+  </clr-radio-container>
+
+  <clr-select-container>
+    <label for="type">Type</label>
+    <select clrSelect id="type" formControlName="type">
+      <option value="">Select type</option>
+      <option value="Bug">Bug</option>
+      <option value="Feature">Feature</option>
+    </select>
+    <clr-control-error>Type is required</clr-control-error>
+  </clr-select-container>
+
+  <button type="submit" class="btn btn-primary">
+    Create
+  </button>
+</form>
