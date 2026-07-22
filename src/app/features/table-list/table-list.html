@@ -1,7 +1,7 @@
 <mat-grid-list cols="2" rowHeight="350px">
   @for (table of tables(); track idx; let idx = $index) {
     @let tableId = idx + 1;
-    <mat-grid-tile>
+    <mat-grid-tile (click)="select(tableId)">
       <mat-card>
         <mat-card-header>
           <mat-card-title># {{tableId}}</mat-card-title>
