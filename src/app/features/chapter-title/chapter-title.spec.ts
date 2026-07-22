@@ -11,7 +11,7 @@ describe('ChapterTitle', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChapterTitle);
-    fixture.componentRef.setInput('chapterTitle', 'Chapter 1: Angular AI Kick-Starter');
+    fixture.componentRef.setInput('text', 'Chapter 1: Angular AI Kick-Starter');
     await fixture.whenStable();
   });
 
@@ -19,7 +19,7 @@ describe('ChapterTitle', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('renders the chapter title in a heading', () => {
+  it('renders the text in a heading', () => {
     const heading: HTMLHeadingElement = fixture.nativeElement.querySelector('h1');
     expect(heading.textContent).toContain('Chapter 1: Angular AI Kick-Starter');
   });

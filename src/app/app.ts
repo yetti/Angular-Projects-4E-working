@@ -6,10 +6,10 @@ import { ChapterTitle } from './features/chapter-title/chapter-title';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ChapterTitle],
+  imports: [RouterOutlet, ChapterTitle],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  private readonly chapterTitleService = inject(ChapterTitleService);
-  protected readonly title = this.chapterTitleService.title;
+  protected readonly chapterTitle = inject(ChapterTitleService).title;
 }
