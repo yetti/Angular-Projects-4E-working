@@ -1,13 +1,9 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
-};
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB6FgatJzChLU2dHmOLn71wGGSmlM643cw',
@@ -19,5 +15,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-provideFirebaseApp(() => app);
-provideFirestore(() => getFirestore(app));
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+    provideFirebaseApp(() => app),
+    provideFirestore(() => getFirestore(app)),
+  ],
+};

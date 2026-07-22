@@ -15,6 +15,6 @@ describe('ChapterTitleService', () => {
   });
 
   it('exposes the chapter title', () => {
-    expect(service.title()).toBe('Chapter 1: Angular AI Kick-Starter');
+    expect(service.title()).toBe('Chapter 3: EasyMenu');
   });
 });
