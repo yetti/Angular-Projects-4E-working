@@ -4,17 +4,17 @@ import { MatCardModule } from '@angular/material/card';
 import { TablesService } from '../../core/services/tables';
 import { Order } from '../order/order';
 import { MatDialog } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-table-list',
-  imports: [MatGridListModule, MatCardModule],
+  imports: [MatGridListModule, MatCardModule, MatListModule],
   templateUrl: './table-list.html',
   styleUrl: './table-list.scss',
 })
 export class TableList {
   private readonly tablesService = inject(TablesService);
   readonly tables = this.tablesService.tables;
-  readonly tableCol = this.tablesService.tableCol;
   private dialog = inject(MatDialog);
 
   select(no: number) {

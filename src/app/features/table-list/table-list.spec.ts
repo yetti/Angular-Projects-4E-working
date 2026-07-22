@@ -35,7 +35,7 @@ describe('TableList', () => {
   });
 
   it('renders a card per table, numbered from one', async () => {
-    tables.set([{ seats: 2 }, { seats: 4 }, { seats: 6 }]);
+    tables.set([{ items: [] }, { items: [] }, { items: [] }]);
     await fixture.whenStable();
 
     const titles: NodeListOf<HTMLElement> =
@@ -44,5 +44,31 @@ describe('TableList', () => {
     expect(titles.length).toBe(3);
     expect(titles[0].textContent).toContain('# 1');
     expect(titles[2].textContent).toContain('# 3');
+  });
+
+  it('renders the items ordered', async () => {
+    const orderItems = [
+      {
+        name: 'burger',
+        qty: 1
+      },
+      {
+        name: 'fries',
+        qty: 1
+      },
+      {
+        name: 'soda',
+        qty: 2
+      }
+    ]
+    tables.set([{ items: orderItems }]);
+    await fixture.whenStable();
+
+    const listItems: NodeListOf<HTMLElement> =
+      fixture.nativeElement.querySelectorAll('mat-list-item');
+
+    expect(listItems.length).toBe(3);
+    expect(listItems[0].textContent).toContain("1x burger");
+    expect(listItems[2].textContent).toContain("2x soda");
   });
 });
