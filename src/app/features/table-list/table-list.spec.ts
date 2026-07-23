@@ -50,17 +50,17 @@ describe('TableList', () => {
     const orderItems = [
       {
         name: 'burger',
-        qty: 1
+        qty: 1,
       },
       {
         name: 'fries',
-        qty: 1
+        qty: 1,
       },
       {
         name: 'soda',
-        qty: 2
-      }
-    ]
+        qty: 2,
+      },
+    ];
     tables.set([{ items: orderItems }]);
     await fixture.whenStable();
 
@@ -68,7 +68,7 @@ describe('TableList', () => {
       fixture.nativeElement.querySelectorAll('mat-list-item');
 
     expect(listItems.length).toBe(3);
-    expect(listItems[0].textContent).toContain("1x burger");
-    expect(listItems[2].textContent).toContain("2x soda");
+    expect(listItems[0].textContent).toContain('1x burger');
+    expect(listItems[2].textContent).toContain('2x soda');
   });
 });

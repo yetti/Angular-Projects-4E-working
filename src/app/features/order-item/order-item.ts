@@ -13,10 +13,10 @@ export class OrderItem {
   readonly qty = model(0);
 
   add() {
-    this.qty.update(qty => qty + 1);
+    this.qty.update((qty) => qty + 1);
   }
 
   subtract() {
-    this.qty.update(qty => Math.max(0, qty - 1));
+    this.qty.update((qty) => Math.max(0, qty - 1));
   }
 }

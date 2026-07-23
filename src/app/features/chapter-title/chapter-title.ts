@@ -8,7 +8,7 @@ import { MatToolbar } from '@angular/material/toolbar';
       <h1>{{ chapterTitle() }}</h1>
     </mat-toolbar>
   `,
-  imports: [MatToolbar]
+  imports: [MatToolbar],
 })
 export class ChapterTitle {
   readonly chapterTitle = input<string>('');

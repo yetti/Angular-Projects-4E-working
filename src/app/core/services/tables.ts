@@ -1,6 +1,13 @@
 import { inject, Service } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { collection, collectionData, DocumentData, Firestore, doc, updateDoc } from '@angular/fire/firestore';
+import {
+  collection,
+  collectionData,
+  doc,
+  DocumentData,
+  Firestore,
+  updateDoc,
+} from '@angular/fire/firestore';
 
 @Service()
 export class TablesService {
@@ -10,6 +17,7 @@ export class TablesService {
     initialValue: [] as DocumentData[],
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async updateTable(no: number, data: any) {
     const tableDoc = doc(this.tableCol, no.toString());
     await updateDoc(tableDoc, data);

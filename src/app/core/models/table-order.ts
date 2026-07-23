@@ -1,6 +1,6 @@
-import { Item } from "./item";
+import { Item } from './item';
 
 export interface TableOrder {
-  no: number,
-  items?: Item[]
+  no: number;
+  items?: Item[];
 }

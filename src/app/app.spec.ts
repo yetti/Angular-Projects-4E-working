@@ -12,10 +12,7 @@ describe('App', () => {
       providers: [
         {
           provide: TablesService,
-          useValue: { tables: signal<DocumentData[]>([]) } satisfies Pick<
-            TablesService,
-            'tables'
-          >,
+          useValue: { tables: signal<DocumentData[]>([]) } satisfies Pick<TablesService, 'tables'>,
         },
       ],
     }).compileComponents();
