@@ -5,6 +5,8 @@ import { TablesService } from '../../core/services/tables';
 import { Order } from '../order/order';
 import { MatDialog } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { Item } from '../../core/models/item';
+import { TableOrder } from '../../core/models/table-order';
 
 @Component({
   selector: 'app-table-list',
@@ -19,7 +21,7 @@ export class TableList {
 
   select(no: number) {
     this.dialog
-      .open(Order, {
+      .open<Order, TableOrder, Item[]>(Order, {
         width: '500px',
         data: { no: no, items: this.tables()[no - 1]['items'] },
       })

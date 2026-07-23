@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { menu } from '../../menu';
 import { OrderItem } from '../order-item/order-item';
 import { Item } from '../../core/models/item';
+import { TableOrder  } from '../../core/models/table-order';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,7 @@ import { Item } from '../../core/models/item';
   styleUrl: './order.scss',
 })
 export class Order {
-  data: { no: number, items?: Item[] } = inject(MAT_DIALOG_DATA);
+  data: TableOrder = inject(MAT_DIALOG_DATA);
   menu = menu;
   private readonly orderItems = viewChildren(OrderItem);
   private dialogRef = inject(MatDialogRef<Order>);
