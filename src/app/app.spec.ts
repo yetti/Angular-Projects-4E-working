@@ -19,7 +19,7 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('app-chapter-title h1')?.textContent).toContain(
-      'Chapter 1: Angular AI Kick-Starter',
+      'Chapter 4: SmartFactory Picker',
     );
   });
 });

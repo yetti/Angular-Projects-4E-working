@@ -49,44 +49,11 @@
         </defs>
       </svg>
       <app-chapter-title [chapterTitle]="title()" />
-      <p>Congratulations! Your app is running. 🎉</p>
+      <p>Building a QR-Drive Warehouse App.</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
-      <div class="pill-group">
-        @for (
-          item of [
-            { title: 'Explore the Docs', link: 'https://angular.dev' },
-            { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-            {
-              title: 'Prompt and best practices for AI',
-              link: 'https://angular.dev/ai/develop-with-ai',
-            },
-            { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-            {
-              title: 'Angular Language Service',
-              link: 'https://angular.dev/tools/language-service',
-            },
-            { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
-          ];
-          track item.title
-        ) {
-          <a class="pill" [href]="item.link" target="_blank" rel="noopener">
-            <span>{{ item.title }}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              viewBox="0 -960 960 960"
-              width="14"
-              fill="currentColor"
-            >
-              <path
-                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
-              />
-            </svg>
-          </a>
-        }
-      </div>
+      <router-outlet />
       <div class="social-links">
         <a
           href="https://github.com/angular/angular"
@@ -142,6 +109,42 @@
             />
           </svg>
         </a>
+        <a aria-label="Scan" routerLink="picking">
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="black"
+              d="
+              M1 1 h5 v5 h-5 Z
+              M2 2 h3 v3 h-3 Z
+              M3 3 h1 v1 h-1 Z
+
+              M19 1 h5 v5 h-5 Z
+              M20 2 h3 v3 h-3 Z
+              M21 3 h1 v1 h-1 Z
+
+              M1 17 h5 v5 h-5 Z
+              M2 18 h3 v3 h-3 Z
+              M3 19 h1 v1 h-1 Z
+
+              M9 9 h2 v2 h-2 Z
+              M12 9 h2 v2 h-2 Z
+              M15 9 h2 v2 h-2 Z
+              M9 12 h2 v2 h-2 Z
+              M12 12 h2 v2 h-2 Z
+              M15 12 h2 v2 h-2 Z
+              M9 15 h2 v2 h-2 Z
+              M12 15 h2 v2 h-2 Z
+              M15 15 h2 v2 h-2 Z
+            "
+            />
+          </svg>
+        </a>
       </div>
     </div>
   </div>
@@ -154,5 +157,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<router-outlet />
