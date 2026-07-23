@@ -10,5 +10,11 @@ export class ProductsService {
     return this.http.get<Product[]>(
       'https://fakestoreapi.com/products'
     );
-  };
+  }
+
+  getSingle(id: number) {
+    return this.http.get<Product>(
+      'https://fakestoreapi.com/products/' + id
+    );
+  }
 }

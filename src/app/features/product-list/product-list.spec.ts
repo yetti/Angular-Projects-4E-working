@@ -55,5 +55,5 @@ describe('ProductList', () => {
     expect(selectedEls?.length).toBe(2);
     expect(selectedEls[0]?.textContent).toContain("Backpack");
     expect(selectedEls[1]?.textContent).toContain("Blue T-shirt");
-  })
+  });
 });
