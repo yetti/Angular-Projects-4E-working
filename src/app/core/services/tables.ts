@@ -10,10 +10,6 @@ export class TablesService {
     initialValue: [] as DocumentData[],
   });
 
-  tableItems(no: number) {
-    return doc(this.tableCol, no.toString());
-  }
-
   async updateTable(no: number, data: any) {
     const tableDoc = doc(this.tableCol, no.toString());
     await updateDoc(tableDoc, data);

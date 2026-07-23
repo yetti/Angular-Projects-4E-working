@@ -5,6 +5,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { menu } from '../../menu';
 import { OrderItem } from '../order-item/order-item';
+import { Item } from '../../core/models/item';
 
 @Component({
   selector: 'app-order',
@@ -13,10 +14,14 @@ import { OrderItem } from '../order-item/order-item';
   styleUrl: './order.scss',
 })
 export class Order {
-  data = inject(MAT_DIALOG_DATA);
+  data: { no: number, items?: Item[] } = inject(MAT_DIALOG_DATA);
   menu = menu;
   private readonly orderItems = viewChildren(OrderItem);
   private dialogRef = inject(MatDialogRef<Order>);
+
+  qtyFor(name: string) {
+    return this.data.items?.find(i => i.name === name)?.qty ?? 0;
+  }
 
   ok() {
     const items = this.orderItems()

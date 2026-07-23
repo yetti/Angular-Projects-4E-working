@@ -1,9 +1,9 @@
 <mat-dialog-content>
    <mat-list>
-     <@for (m of menu; track $index) {
+     @for (m of menu; track $index; let i = $index) {
       <div mat-subheader>{{ m.name }}</div>
       @for (item of m.items; track $index) {
-        <app-order-item [name]="item.name" />
+        <app-order-item [name]="item.name" [qty]="qtyFor(item.name)"/>
       }
       <mat-divider />
      }

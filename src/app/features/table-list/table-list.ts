@@ -18,14 +18,17 @@ export class TableList {
   private dialog = inject(MatDialog);
 
   select(no: number) {
-    this.dialog.open(Order, {
-      width: '500px',
-      data: no,
-    }).afterClosed().subscribe(async items => {
-      if (items) {
-        await this.tablesService.updateTable(no, {items});
-      }
-    });
+    this.dialog
+      .open(Order, {
+        width: '500px',
+        data: { no: no, items: this.tables()[no - 1]['items'] },
+      })
+      .afterClosed()
+      .subscribe(async (items) => {
+        if (items) {
+          await this.tablesService.updateTable(no, { items });
+        }
+      });
   }
 }
 
