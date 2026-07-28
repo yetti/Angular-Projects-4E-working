@@ -1,6 +1,11 @@
 {
   "printWidth": 100,
   "singleQuote": true,
+  "tabs": false,
+  "tabWidth": 2,
+  "semicolon": true,
+  "quoteProps": "preserve",
+  "bracketSpacing": true,
   "overrides": [
     {
       "files": "*.html",
