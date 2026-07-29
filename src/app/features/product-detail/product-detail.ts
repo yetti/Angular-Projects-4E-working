@@ -10,5 +10,5 @@ import { CurrencyPipe, UpperCasePipe } from '@angular/common';
   styleUrl: './product-detail.scss',
 })
 export class ProductDetail {
-  product = signal<Product>(inject(ActivatedRoute).snapshot.data['product'])
+  product = signal<Product>(inject(ActivatedRoute).snapshot.data['product']);
 }

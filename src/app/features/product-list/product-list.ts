@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProductsService } from '../../core/services/products';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SlicePipe } from '@angular/common';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',

@@ -15,8 +15,6 @@ export class App {
   protected readonly title = this.chapterTitleService.title;
 
   constructor() {
-    this.chapterTitleService.setTitle(
-      'Chapter 4: SmartFactory Picker'
-    )
+    this.chapterTitleService.setTitle('Chapter 4: SmartFactory Picker');
   }
 }

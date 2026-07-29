@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductList } from './product-list';
-import { ProductsService } from '../../core/services/products';
+import { provideRouter } from '@angular/router';
 import { of } from 'rxjs/internal/observable/of';
+import { ProductsService } from '../../core/services/products';
+import { ProductList } from './product-list';
 
 describe('ProductList', () => {
   let component: ProductList;
@@ -33,11 +34,12 @@ describe('ProductList', () => {
     await TestBed.configureTestingModule({
       imports: [ProductList],
       providers: [
+        provideRouter([]),
         {
           provide: ProductsService,
-          useValue: fakeProductService
-        }
-      ]
+          useValue: fakeProductService,
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductList);
@@ -51,9 +53,9 @@ describe('ProductList', () => {
 
   it('should display products', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const selectedEls = Array.from(compiled.querySelectorAll('.pill span'))
+    const selectedEls = Array.from(compiled.querySelectorAll('.pill span'));
     expect(selectedEls?.length).toBe(2);
-    expect(selectedEls[0]?.textContent).toContain("Backpack");
-    expect(selectedEls[1]?.textContent).toContain("Blue T-shirt");
+    expect(selectedEls[0]?.textContent).toContain('Backpack');
+    expect(selectedEls[1]?.textContent).toContain('Blue T-shirt');
   });
 });
