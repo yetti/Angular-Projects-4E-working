@@ -1,4 +1,4 @@
-<form nz-form #ticketForm="ngForm" (ngSubmit)="add()">
+<form nz-form #ticketForm="ngForm" (ngSubmit)="add(ticketForm)">
   <nz-form-item>
     <nz-form-label nzFor="plateNo" nzRequired>Plate number</nz-form-label>
     <nz-form-control>
@@ -33,6 +33,7 @@
   nztitle="AI Creator"
   (nzOnCancel)="isVisible.set(false)"
   (nzOnOk)="ok()"
+  [nzOkLoading]="isWorking()"
 >
   <ng-container *nzModalContent>
     <textarea [(ngModel)]="prompt" rows="3" placeholder="Enter ticket details" nz-input></textarea>

@@ -1,5 +1,6 @@
 import { Component, computed, inject, viewChild } from '@angular/core';
 import { GoogleMap, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { Parking } from '../../core/services/parking';
 
 @Component({
@@ -9,6 +10,7 @@ import { Parking } from '../../core/services/parking';
   styleUrl: './cars.scss',
 })
 export class Cars {
+  private readonly localisationService = inject(NzI18nService);
   private parkingService = inject(Parking);
   private readonly info = viewChild.required(MapInfoWindow);
   options: google.maps.MapOptions = {
@@ -39,6 +41,14 @@ export class Cars {
       .tickets()
       .find((ticket) => ticket.plateNo === marker.advancedMarker.title);
 
-    this.info().open(marker, false, `Arrived at: ${ticket?.arrival}`);
+    this.info().infoWindow?.setHeaderContent(ticket?.plateNo);
+    this.info().open(
+      marker,
+      false,
+      `Arrived at: ${ticket?.arrival.toLocaleString(this.localisationService.getLocale().locale, {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      })}`,
+    );
   }
 }
