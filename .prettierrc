@@ -1,9 +1,7 @@
 {
   "printWidth": 100,
   "singleQuote": true,
-  "tabs": false,
   "tabWidth": 2,
-  "semicolon": true,
   "quoteProps": "preserve",
   "bracketSpacing": true,
   "overrides": [
@@ -12,6 +10,10 @@
       "options": {
         "parser": "angular"
       }
+    },
+    {
+      "files": ["*.css", "*.scss"],
+      "options": { "singleQuote": false }
     }
   ]
 }

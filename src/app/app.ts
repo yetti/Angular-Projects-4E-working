@@ -7,7 +7,7 @@ import { ChapterTitle } from './features/chapter-title/chapter-title';
   selector: 'app-root',
   imports: [RouterOutlet, ChapterTitle],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   private readonly chapterTitleService = inject(ChapterTitleService);
