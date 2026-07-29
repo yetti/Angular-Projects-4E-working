@@ -1,37 +1,25 @@
-import { Service, signal } from '@angular/core';
-import {
-  ChatSession,
-  FunctionDeclarationsTool,
-  getAI,
-  getGenerativeModel,
-  Schema,
-} from 'firebase/ai';
-import { getApp } from 'firebase/app';
+import { inject, Service, signal } from '@angular/core';
+import { ChatSession, FunctionDeclarationsTool, Schema } from 'firebase/ai';
 import { Ticket } from '../../shared/ticket';
+import { GeminiChat } from './gemini-chat';
 
-@Service()
-export class Parking {
-  readonly tickets = signal<Ticket[]>([]);
-  private readonly chat: ChatSession;
-
-  constructor() {
-    const toolset: FunctionDeclarationsTool = {
-      functionDeclarations: [
-        {
-          name: 'addTicket',
-          description: 'Add one ticket',
-          parameters: Schema.object({
-            properties: {
-              plateNo: Schema.string(),
-              arrival: Schema.string(),
-              location: Schema.string(),
-            },
-          }),
+const TOOLSET: FunctionDeclarationsTool = {
+  functionDeclarations: [
+    {
+      name: 'addTicket',
+      description: 'Add one ticket',
+      parameters: Schema.object({
+        properties: {
+          plateNo: Schema.string(),
+          arrival: Schema.string(),
+          location: Schema.string(),
         },
-      ],
-    };
+      }),
+    },
+  ],
+};
 
-    const instructions = `
+const INSTRUCTIONS = `
     Welcome to citypass.
     You are a superstar agent for this car parking validator.
     You will assist users by submitting parking tickets.
@@ -39,15 +27,20 @@ export class Parking {
     act as a geocode service to convert a location or address
     to coordinates latitude/longitude.`;
 
-    const ai = getAI(getApp());
+@Service()
+export class Parking {
+  readonly tickets = signal<Ticket[]>([]);
 
-    const model = getGenerativeModel(ai, {
+  private readonly gemini = inject(GeminiChat);
+  #chat?: ChatSession;
+
+  private get chat(): ChatSession {
+    this.#chat ??= this.gemini.createSession({
       model: 'gemini-3.6-flash',
-      systemInstruction: instructions,
-      tools: [toolset],
+      systemInstruction: INSTRUCTIONS,
+      tools: [TOOLSET],
     });
-
-    this.chat = model.startChat();
+    return this.#chat;
   }
 
   async ask(prompt: string) {
