@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ClrNavigationModule } from '@clr/angular';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'chapter-title',
   imports: [ClrNavigationModule],
   template: `<clr-header>
@@ -10,7 +11,7 @@ import { ClrNavigationModule } from '@clr/angular';
         <span class="title">{{ chapterTitle() }}</span>
       </a>
     </div>
-  </clr-header>`
+  </clr-header>`,
 })
 export class ChapterTitle {
   readonly chapterTitle = input<string>('');

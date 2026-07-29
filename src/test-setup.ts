@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /**
  * jsdom does not implement ResizeObserver, but several Clarity components
  * (datagrid, modal, nav) construct one on instantiation and throw without it.

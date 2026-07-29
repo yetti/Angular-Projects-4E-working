@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": ["angular-eslint", "angular-eslint"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -78,6 +78,12 @@
           "options": {
             "setupFiles": ["src/test-setup.ts"],
             "providersFile": "src/test-providers.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
