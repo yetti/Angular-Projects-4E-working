@@ -1,3 +1,7 @@
+# Working through "Angular Projects 4th edition"
+
+Learning Angular using the projects in the "[Angular Projects 4th edition](https://www.packtpub.com/en-sg/product/angular-projects-9781806668465)" book. This `main` branch is the basis for each chapter's application. Each chapter exists as a separate branch in this repository.
+
 # MyApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.7.
