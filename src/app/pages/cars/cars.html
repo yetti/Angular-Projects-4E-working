@@ -1,0 +1,12 @@
+<google-map height="400px" width="600px" [options]="options">
+  @for (position of positions(); track position) {
+    <map-advanced-marker
+      [position]="position.location"
+      [title]="position.car"
+      [options]="advancedMarkerOptions"
+      #marker="mapAdvancedMarker"
+      (mapClick)="showTicket(marker)"
+    />
+  }
+  <map-info-window />
+</google-map>

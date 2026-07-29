@@ -1,15 +1,14 @@
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ChapterTitleService } from './core/services/chapter-title';
-import { ChapterTitle } from './features/chapter-title/chapter-title';
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ChapterTitle],
+  imports: [RouterOutlet, RouterLink, NzLayoutModule, NzMenuModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  private readonly chapterTitleService = inject(ChapterTitleService);
-  protected readonly title = this.chapterTitleService.title;
+  // readonly FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 }
